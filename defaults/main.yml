@@ -1,0 +1,10 @@
+---
+
+jenkinsenv_user: jenkins
+
+docker_users:
+    - jenkins
+
+lxd_users:
+    - jenkins
+

@@ -1,0 +1,31 @@
+---
+## Tools for PHP Testing
+## composer tools are in /usr/share/composer/vendor/bin
+
+- file: dest=/usr/share/composer mode=0755 state=directory
+
+- name: define composer.json to use composer install module
+  copy: src=composer.json dest=/usr/share/composer/composer.json mode=0644
+## FIXME! no better way to do that?
+- name: Download Composer installer.
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/composer-installer.php
+    mode: 0755
+    sha256sum: 5af00ed7dbe47d849eca28cd44b6064d34b362ce20ba465652d72b4d121134b1
+- name: install composer
+  shell: "php -q /tmp/composer-installer.php --install-dir=/usr/local/bin --filename=composer"
+  args:
+    creates: /usr/local/bin/composer
+- name: install PHP dependencies via composer
+  composer: command=install working_dir=/usr/share/composer
+
+- name: install phpunit testing tools - version choice
+  get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode=0755 sha256sum={{ item.s }}"
+  with_items:
+## Phpunit 4.8, only choice if php < 5.6
+    - { u: 'https://phar.phpunit.de/phpunit-old.phar', d: 'phpunit48', s: 'cbf5773d92c83ed6ad4ad57fa60171e939ad1757bf14c81a62d761e5d1825314' }
+## Phpunit 5.4
+    - { u: 'https://phar.phpunit.de/phpunit.phar', d: 'phpunit54', s: 'b0ae66d41867d6ec38ba87651ec290165db318682968d2e5020c456677d8a003' }
+    - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/master/build/phpmetrics.phar', d: 'phpmetrics', s: 'a7aac1115f6ad30365d89655744bb2a3bfed6e798ad30e37ddefd1fa0618da57' }
+

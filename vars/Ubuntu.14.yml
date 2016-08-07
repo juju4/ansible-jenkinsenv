@@ -1,0 +1,20 @@
+---
+
+jenkinsenv_extra_pkg:
+    - ansible
+    - vagrant
+    - php5-cli
+    - php5-xsl
+    - python-virtualenv
+    - python-pip
+    - zlib1g-dev
+## java
+    - ant
+    - maven
+    - checkstyle
+    - findbugs
+    - cobertura
+## https://code.google.com/archive/p/rough-auditing-tool-for-security/downloads
+## http://stackoverflow.com/questions/14585222/how-to-publish-rough-auditing-tool-for-security-rats-xml-results-in-jenkins
+    - rats
+
