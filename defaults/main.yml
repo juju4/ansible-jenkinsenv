@@ -3,8 +3,12 @@
 jenkinsenv_user: jenkins
 
 docker_users:
-    - jenkins
+    - "{{ jenkinsenv_user }}"
 
 lxd_users:
-    - jenkins
+    - "{{ jenkinsenv_user }}"
+
+## global?
+#kitchen_user: jenkins
+
 

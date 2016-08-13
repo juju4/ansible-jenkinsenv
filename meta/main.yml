@@ -26,7 +26,7 @@ galaxy_info:
   - system
   - security
 dependencies:
-  - ernestas-poskus.docker
+#  - ernestas-poskus.docker
   - kitchen
   - lxd
 
