@@ -26,6 +26,6 @@
 ## Phpunit 4.8, only choice if php < 5.6
     - { u: 'https://phar.phpunit.de/phpunit-old.phar', d: 'phpunit48', s: 'cbf5773d92c83ed6ad4ad57fa60171e939ad1757bf14c81a62d761e5d1825314' }
 ## Phpunit 5.4
-    - { u: 'https://phar.phpunit.de/phpunit.phar', d: 'phpunit54', s: 'b0ae66d41867d6ec38ba87651ec290165db318682968d2e5020c456677d8a003' }
+    - { u: 'https://phar.phpunit.de/phpunit.phar', d: 'phpunit54', s: '6decad1e5236cfaebf54c1eda40d75f0dd3aee34e75a5f0d27da66062d97c9a2' }
     - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/master/build/phpmetrics.phar', d: 'phpmetrics', s: 'c2a91d6e8269286e7eab33a649293cfbaefdeb965088620930ca2d788c921ce6' }
 

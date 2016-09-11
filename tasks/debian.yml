@@ -6,6 +6,7 @@
     - git
     - subversion
     - graphviz
+    - ufw
 
 - name: apt | jenkins dependencies - extra
   apt: name={{item}} state=present

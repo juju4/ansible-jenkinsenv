@@ -1,0 +1,22 @@
+#!/bin/sh
+## quick docker images+containers cleaning
+
+umask 077
+export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin
+
+if [ X`which docker` != X ]; then
+
+  dlist=`docker ps -qa`
+  if [ "X$dlist" != "X" ]; then
+      docker rm --force $dlist 2>&1 > /tmp/docker_cleaning.log
+  fi
+  dilist=`docker images | grep '^<none>' | awk '{print $3}'`
+  if [ "X$dilist" != "X" ]; then
+      docker rmi $dilist 2>&1 > /tmp/docker_images_cleaning.log
+  fi
+
+## OR
+#docker rm --force $(docker ps -qa) 2>&1 > /tmp/docker_cleaning.log
+#docker rmi $(docker images | grep '^<none>' | awk '{print $3}') 2>&1 > /tmp/docker_images_cleaning.log
+
+fi # [ X`which docker` != X ]

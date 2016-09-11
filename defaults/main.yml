@@ -2,6 +2,9 @@
 
 jenkinsenv_user: jenkins
 
+jenkinsenv_fw_restrict: true
+jenkinsenv_containers_cron_cleaning: true
+
 docker_users:
     - "{{ jenkinsenv_user }}"
 

@@ -1,0 +1,43 @@
+---
+
+## need ansible 2.1 for uid_owner
+- name: allow jenkins user for http/https
+  iptables:
+    chain: OUTPUT
+    protocol: tcp
+    destination_port: "{{ item }}"
+    uid_owner: "{{ jenkinsenv_user }}"
+    comment: "jenkins traffic port {{ item }}"
+    jump: ACCEPT
+  with_items:
+    - 80
+    - 443
+
+## https://issues.jenkins-ci.org/browse/JENKINS-6614
+- name: allow jenkins user for multicast
+  iptables:
+    chain: OUTPUT
+    protocol: udp
+    destination: 224.0.0.251
+    destination_port: 5353
+    uid_owner: "{{ jenkinsenv_user }}"
+    comment: "jenkins multicast traffic port 5353"
+    jump: ACCEPT
+
+## ip_tables: owner match: used from hooks INPUT, but only valid from OUTPUT/POSTROUTING
+#- name: allow related and established traffic
+#  iptables: chain=INPUT ctstate=ESTABLISHED,RELATED jump=ACCEPT uid_owner="{{ jenkinsenv_user }}"
+
+### This prevent jenkins to be reachable ....
+###  ex: curl -D - -v --max-time 5 http://localhost:8888/cli/
+#- name: block all other traffic of jenkins user
+#  iptables:
+#    chain: "{{ item }}"
+#    uid_owner: "{{ jenkinsenv_user }}"
+#    comment: "jenkins block {{ item }}"
+#    jump: DROP
+#  with_items:
+#    - OUTPUT
+
+## FIXME! if iptables/netfilter-persistent installed, save rules?
+

@@ -1,0 +1,17 @@
+#!/bin/sh
+## lxc images cleaning script
+
+umask 077
+export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin
+
+if [ X`which lxc` != 'X' ]; then
+
+  llist=`lxc list -c n | awk '!/---/ && !/NAME/  && /(default|nginx)-(ubuntu|debian|centos|alpine)-/ { print $2 }'`
+  if [ "X$llist" != "X" ]; then
+      lxc delete $llist --force 2>&1 > /tmp/lxc_cleaning.log
+  fi
+
+## OR
+#lxc delete $(lxc list -c n | awk '!/---/ && !/NAME/ { print $2 }') 2>&1 > /tmp/lxc_cleaning.log
+
+fi # [ X`which lxc` != 'X' ]

@@ -29,5 +29,6 @@ dependencies:
 #  - ernestas-poskus.docker
   - kitchen
   - lxd
+  - lxdconfigure
 
 
