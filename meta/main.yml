@@ -10,25 +10,24 @@ galaxy_info:
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
-  - name: Centos
+  - name: EL
     versions:
      - 7
   - name: Ubuntu
     versions:
     - trusty
-  - name: Debian
-    versions:
+    - xenial
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
   #
-  categories:
+  galaxy_tags:
   - system
   - security
 dependencies:
 #  - ernestas-poskus.docker
-  - kitchen
-  - lxd
-  - lxdconfigure
+  - juju4.kitchen
+  - juju4.lxd
+  - juju4.lxdconfigure
 
 

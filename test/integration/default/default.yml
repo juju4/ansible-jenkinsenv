@@ -5,5 +5,5 @@
 #  vars:
 #    - a:
   roles:
-    - jenkinsenv
+    - juju4.jenkinsenv
 

@@ -13,8 +13,26 @@
 - include: jenkins-test-ansible.yml
 
 - include: jenkins-fw-restrict.yml
-  when: jenkinsenv_fw_restrict is defined and jenkinsenv_fw_restrict and (ansible_virtualization_type is not defined or not (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "kvm"))
+  when: jenkinsenv_fw_restrict is defined and jenkinsenv_fw_restrict and (ansible_virtualization_type is not defined or not (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker"))
 
 - include: cleaning.yml
   when: jenkinsenv_containers_cron_cleaning is defined and jenkinsenv_containers_cron_cleaning
 
+- name: install virtualbox
+  package: name=virtualbox state=present
+  when: jenkinsenv_w_virtualbox is defined and jenkinsenv_w_virtualbox
+
+- block:
+    - stat: path=/usr/local/bin/packer
+      register: hasPacker
+    - block:
+        - name: download packer
+          get_url: "url={{ item.url }} dest=/tmp/ mode=0644 checksum={{ item.checksum }}"
+          with_items: "{{ jenkinsenv_packer }}"
+        - name: unarchive packer
+#          unarchive: "src=/tmp/{{ item.url | basename }} dest={{ item.dest }} mode=0755 remote_src=yes"
+#          unarchive: "src={{ item.url }} dest={{ item.dest }} mode=0755 remote_src=yes"
+          command: "unzip /tmp/{{ item.url | basename }} -d {{ item.dest }} creates={{ item.dest }}/packer"
+          with_items: "{{ jenkinsenv_packer }}"
+      when: not hasPacker.stat.exists
+  when: jenkinsenv_w_packer is defined and jenkinsenv_w_packer

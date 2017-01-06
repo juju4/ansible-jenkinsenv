@@ -4,6 +4,10 @@ jenkinsenv_user: jenkins
 
 jenkinsenv_fw_restrict: true
 jenkinsenv_containers_cron_cleaning: true
+jenkinsenv_w_virtualbox: false
+jenkinsenv_w_packer: false
+jenkinsenv_packer:
+  - { url: 'https://releases.hashicorp.com/packer/0.12.1/packer_0.12.1_linux_amd64.zip', dest: '/usr/local/bin/', checksum: 'sha256:456e6245ea95705191a64e0556d7a7ecb7db570745b3b4b2e1ebf92924e9ef95' }
 
 docker_users:
     - "{{ jenkinsenv_user }}"
