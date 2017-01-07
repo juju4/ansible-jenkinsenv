@@ -8,7 +8,7 @@
   get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode=0755 sha256sum={{ item.s }}"
   with_items:
 ## Phpunit 4.8, only choice if php < 5.6
-    - { u: 'https://phar.phpunit.de/phpunit-old.phar', d: 'phpunit48', s: '4fd145a62bd3358349cbb190da4532a00219b8fa637ff51485931fa54ff04864' }
+    - { u: 'https://phar.phpunit.de/phpunit-4.8.phar', d: 'phpunit48', s: 'dd4bc31dfc500f1314dcdf6b1c1384d0ffbe25d9c3bd0588ba87f29dec20a8c2' }
     - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/master/build/phpmetrics.phar', d: 'phpmetrics', s: 'c2a91d6e8269286e7eab33a649293cfbaefdeb965088620930ca2d788c921ce6' }
 
 - name: install phpunit testing tool - currrent
