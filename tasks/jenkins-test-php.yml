@@ -7,9 +7,26 @@
 - name: install phpunit testing tools - version choice
   get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode=0755 sha256sum={{ item.s }}"
   with_items:
+    - { u: 'https://github.com/phpmetrics/PhpMetrics/blob/v1.10.0/build/phpmetrics.phar', d: 'phpmetrics', s: 'd3daeeafc7c129aa3b099116e667f10e90a71eb9e2fe63aab72b12f11dad4192' }
+
 ## Phpunit 4.8, only choice if php < 5.6
-    - { u: 'https://phar.phpunit.de/phpunit-4.8.phar', d: 'phpunit48', s: 'dd4bc31dfc500f1314dcdf6b1c1384d0ffbe25d9c3bd0588ba87f29dec20a8c2' }
-    - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/master/build/phpmetrics.phar', d: 'phpmetrics', s: 'c2a91d6e8269286e7eab33a649293cfbaefdeb965088620930ca2d788c921ce6' }
+- name: install phpunit testing tool - 4.8
+  get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode={{ item.m }}"
+  with_items:
+## Phpunit (current)
+## https://phpunit.de/manual/current/en/installation.html#installation.phar.verification
+    - { u: 'https://phar.phpunit.de/phpunit-4.8.phar', d: 'phpunit', m: '0755' }
+    - { u: 'https://phar.phpunit.de/phpunit-4.8.phar.asc', d: 'phpunit-4.8.asc', m: '0644' }
+- name: recover phpunit gpg key
+  command: "gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A"
+  register: import
+  changed_when: "'imported: 1' in import.stdout"
+
+- name: gpg verify current phpunit download
+  command: "gpg --verify /usr/local/bin/phpunit-4.8.asc"
+  register: gpgresult
+  changed_when: false
+  failed_when: gpgresult.rc != 0
 
 - name: install phpunit testing tool - currrent
   get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode={{ item.m }}"
