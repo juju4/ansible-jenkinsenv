@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-jenkinsenv.svg?branch=master)](https://travis-ci.org/juju4/ansible-jenkinsenv)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-jenkinsenv.svg?branch=master)](https://travis-ci.org/juju4/ansible-jenkinsenv)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-jenkinsenv.svg?branch=devel)](https://travis-ci.org/juju4/ansible-jenkinsenv/branches)
 # Jenkins Environment ansible role
 
 Ansible role to setup jenkins test environment. It can be executed on master or nodes.
@@ -8,6 +9,7 @@ Ansible role to setup jenkins test environment. It can be executed on master or 
 ### Ansible
 It was tested on the following versions:
  * 2.0
+ * 2.2
 
 ### Operating systems
 
