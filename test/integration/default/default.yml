@@ -3,7 +3,7 @@
 - hosts: all
 #- hosts: test-kitchen
   vars:
-    - lxd_preloadimages:
+    - lxd_preloadimages: []
     - lxd_preconfigure: []
 ## must be different than lxc host if relevant
     - lxd_bridgeconf_ipv4_addr: "10.252.10.1"
