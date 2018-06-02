@@ -1,0 +1,18 @@
+---
+
+jenkinsenv_extra_pkg:
+    - ansible
+    - vagrant
+    - php-cli
+    - php-xsl
+    - python-virtualenv
+    - python-pip
+    - zlib1g-dev
+## java
+    - ant
+    - maven
+    - checkstyle
+    - findbugs
+    - cobertura
+## No rats on xenial
+

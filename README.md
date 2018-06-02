@@ -10,10 +10,11 @@ Ansible role to setup jenkins test environment. It can be executed on master or 
 It was tested on the following versions:
  * 2.0
  * 2.2
+ * 2.5
 
 ### Operating systems
 
-Tested mostly on Ubuntu 14.04, 16.04
+Tested on Ubuntu 14.04, 16.04 and 18.04
 
 ## Example Playbook
 
@@ -23,7 +24,7 @@ For example
 ```
 - host: all
   roles:
-    - jenkinsenv
+    - juju4.jenkinsenv
 ```
 
 ## Variables
@@ -37,13 +38,13 @@ This role has a travis basic test (for github), more advanced with kitchen and a
 
 Once you ensured all necessary roles are present, You can test with:
 ```
-$ cd /path/to/roles/jenkins
+$ cd /path/to/roles/juju4.jenkinsenv
 $ kitchen verify
 $ kitchen login
 ```
 or
 ```
-$ cd /path/to/roles/jenkins/test/vagrant
+$ cd /path/to/roles/juju4.jenkinsenv/test/vagrant
 $ vagrant up
 $ vagrant ssh
 ```
