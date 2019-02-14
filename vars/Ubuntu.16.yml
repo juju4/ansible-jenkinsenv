@@ -15,4 +15,3 @@ jenkinsenv_extra_pkg:
     - findbugs
     - cobertura
 ## No rats on xenial
-

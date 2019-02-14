@@ -6,14 +6,18 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - include: redhat.yml
-  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_os_family == "RedHat"
 
 ## testing tools? slave?
 - include: jenkins-test-php.yml
 - include: jenkins-test-ansible.yml
 
 - include: jenkins-fw-restrict.yml
-  when: jenkinsenv_fw_restrict is defined and jenkinsenv_fw_restrict and (ansible_virtualization_type is not defined or not (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker"))
+  when: >
+    jenkinsenv_fw_restrict is defined and jenkinsenv_fw_restrict and
+    (ansible_virtualization_type is not defined or
+      not (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
+    )
 
 - include: cleaning.yml
   when: jenkinsenv_containers_cron_cleaning is defined and jenkinsenv_containers_cron_cleaning

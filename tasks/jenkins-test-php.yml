@@ -7,7 +7,10 @@
 - name: install phpunit testing tools - version choice
   get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode=0755 sha256sum={{ item.s }}"
   with_items:
-    - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/v1.10.0/build/phpmetrics.phar', d: 'phpmetrics', s: 'a7aac1115f6ad30365d89655744bb2a3bfed6e798ad30e37ddefd1fa0618da57' }
+    - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/v1.10.0/build/phpmetrics.phar',
+        d: 'phpmetrics',
+        s: 'a7aac1115f6ad30365d89655744bb2a3bfed6e798ad30e37ddefd1fa0618da57'
+      }
 
 ## Phpunit 4.8, only choice if php < 5.6
 - name: install phpunit testing tool - 4.8
@@ -45,4 +48,3 @@
   register: gpgresult
   changed_when: false
   failed_when: gpgresult.rc != 0
-

@@ -8,8 +8,9 @@
   with_items:
     - docker-cleaning.sh
     - lxc-cleaning.sh
+
 - name: cron task to clean docker ps + images
   cron: name="docker cleaning" minute="15" hour="5" job="/usr/local/bin/docker-cleaning.sh"
+
 - name: cron task to clean lxc running images
   cron: name="lxc cleaning" minute="35" hour="5" job="/usr/local/bin/lxc-cleaning.sh"
-

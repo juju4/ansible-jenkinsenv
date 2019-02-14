@@ -1,7 +1,8 @@
 ---
 
 - name: install pip modules
-  pip: name={{ item }}
-  with_items:
-    - ansible-lint
-
+  pip:
+    name: ansible-lint
+    state: present
+  register: pkg_result
+  until: pkg_result is success

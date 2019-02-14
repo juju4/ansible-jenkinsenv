@@ -7,7 +7,10 @@ jenkinsenv_containers_cron_cleaning: true
 jenkinsenv_w_virtualbox: false
 jenkinsenv_w_packer: false
 jenkinsenv_packer:
-  - { url: 'https://releases.hashicorp.com/packer/1.0.0/packer_1.0.0_linux_amd64.zip', dest: '/usr/local/bin/', checksum: 'sha256:ed697ace39f8bb7bf6ccd78e21b2075f53c0f23cdfb5276c380a053a7b906853' }
+  - { url: 'https://releases.hashicorp.com/packer/1.0.0/packer_1.0.0_linux_amd64.zip',
+      dest: '/usr/local/bin/',
+      checksum: 'sha256:ed697ace39f8bb7bf6ccd78e21b2075f53c0f23cdfb5276c380a053a7b906853'
+    }
 
 docker_users:
     - "{{ jenkinsenv_user }}"
@@ -17,5 +20,3 @@ lxd_users:
 
 ## global?
 #kitchen_user: jenkins
-
-

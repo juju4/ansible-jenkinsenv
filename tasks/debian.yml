@@ -1,15 +1,13 @@
 ---
 
 - name: apt | jenkins dependencies
-  apt: name={{item}} state=present
-  with_items:
-    - git
-    - subversion
-    - graphviz
-    - ufw
+  apt:
+    name: ['git', 'subversion', 'graphviz', 'ufw']
+    state: present
+  register: pkg_result
+  until: pkg_result is success
 
 - name: apt | jenkins dependencies - extra
-  apt: name={{item}} state=present
-  with_items:
-    - "{{ jenkinsenv_extra_pkg }}"
-
+  apt: name={{ jenkinsenv_extra_pkg }} state=present
+  register: pkg_result
+  until: pkg_result is success

@@ -17,4 +17,3 @@ jenkinsenv_extra_pkg:
 ## https://code.google.com/archive/p/rough-auditing-tool-for-security/downloads
 ## http://stackoverflow.com/questions/14585222/how-to-publish-rough-auditing-tool-for-security-rats-xml-results-in-jenkins
     - rats
-

@@ -1,6 +1,7 @@
 ---
 
-- file: dest=/usr/share/composer mode=0755 state=directory
+- name: Ensure composer directory exists
+  file: dest=/usr/share/composer mode=0755 state=directory
 
 - name: define composer.json to use composer install module
   copy: src=composer.json dest=/usr/share/composer/composer.json mode=0644
@@ -39,4 +40,3 @@
 
 - name: install PHP dependencies via composer
   composer: command=install working_dir=/usr/share/composer
-

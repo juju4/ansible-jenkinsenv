@@ -16,8 +16,12 @@ jenkins_url_prefix: ''
 ## session timeout (default 30min)
 jenkins_java_options: "-Djenkins.install.runSetupWizard=false -Dmail.smtp.starttls.enable=true -Dhudson.DNSMultiCast.disabled=true -Dhudson.udp=-1 -Dhudson.model.DirectoryBrowserSupport.CSP=\\\"sandbox; default-src 'self'; img-src 'self'; style-src 'self' nvd3.org cdn.rawgit.com; script-src 'self' d3js.org nvd3.org cdn.rawgit.com\\\" -Xmx1048m"
 jenkins_init_changes:
-  - {option: "JENKINS_ARGS", value: "--prefix={{ jenkins_url_prefix }} --httpListenAddress=127.0.0.1 --ajp13Port=-1 --httpsPort=-1 --sessionTimeout=60"}
-  - {option: "JENKINS_JAVA_OPTIONS", value: "{{ jenkins_java_options }}"}
+  - { option: "JENKINS_ARGS",
+      value: "--prefix={{ jenkins_url_prefix }} --httpListenAddress=127.0.0.1 --ajp13Port=-1 --httpsPort=-1 --sessionTimeout=60"
+    }
+  - { option: "JENKINS_JAVA_OPTIONS",
+      value: "{{ jenkins_java_options }}"
+    }
 
 ### geerlingguy.gitlab ###
 
@@ -36,4 +40,3 @@ gitlab_nginx_listen_port: 9090
 ## Admin Area: Settings
 ## set users? cli?
 ## Enable InfluxDB Metrics ? cli?
-
