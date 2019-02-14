@@ -7,9 +7,9 @@
 - name: install phpunit testing tools - version choice
   get_url: "url={{ item.u }} dest=/usr/local/bin/{{ item.d }} mode=0755 sha256sum={{ item.s }}"
   with_items:
-    - { u: 'https://github.com/phpmetrics/PhpMetrics/raw/v1.10.0/build/phpmetrics.phar',
+    - { u: 'https://github.com/phpmetrics/PhpMetrics/releases/download/v2.4.1/phpmetrics.phar',
         d: 'phpmetrics',
-        s: 'a7aac1115f6ad30365d89655744bb2a3bfed6e798ad30e37ddefd1fa0618da57'
+        s: '66b6d84f40ad6b40f54cf2613d10f9e517b7141687f744fe1e4cbd5a80f7a30a'
       }
 
 ## Phpunit 4.8, only choice if php < 5.6
