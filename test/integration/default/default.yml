@@ -1,7 +1,6 @@
 ---
 
 - hosts: all
-#- hosts: test-kitchen
   vars:
     - lxd_preloadimages:
         - { i: 'ubuntu:16.04', alias: 'ubuntu-16.04-nopython' }
