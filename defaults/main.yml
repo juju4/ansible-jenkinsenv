@@ -29,3 +29,4 @@ pgp_server: 'pgp.uni-mainz.de'
 #proxy_scheme: ''
 #proxy_host: ''
 #proxy_port: ''
+install_archives: /var/_install
