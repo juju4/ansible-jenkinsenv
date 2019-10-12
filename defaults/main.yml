@@ -20,3 +20,12 @@ lxd_users:
 
 ## global?
 #kitchen_user: jenkins
+
+phpunit_signing_keys_local:
+  - '0x4AA394086372C20A'
+phpunit_signing_keys: []
+#phpunit_signing_keys: [ '0x4AA394086372C20A' ]
+pgp_server: 'pgp.uni-mainz.de'
+#proxy_scheme: ''
+#proxy_host: ''
+#proxy_port: ''

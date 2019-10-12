@@ -20,10 +20,8 @@
 ## https://phpunit.de/manual/current/en/installation.html#installation.phar.verification
     - { u: 'https://phar.phpunit.de/phpunit-4.8.phar', d: 'phpunit48', m: '0755' }
     - { u: 'https://phar.phpunit.de/phpunit-4.8.phar.asc', d: 'phpunit48.asc', m: '0644' }
-- name: recover phpunit gpg key
-  command: "gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A"
-  register: import
-  changed_when: "'imported: 1' in import.stdout"
+
+- include: gpg-keys-load.yml
 
 - name: gpg verify current phpunit download
   command: "gpg --verify /usr/local/bin/phpunit48.asc"
@@ -38,10 +36,6 @@
 ## https://phpunit.de/manual/current/en/installation.html#installation.phar.verification
     - { u: 'https://phar.phpunit.de/phpunit.phar', d: 'phpunit', m: '0755' }
     - { u: 'https://phar.phpunit.de/phpunit.phar.asc', d: 'phpunit.asc', m: '0644' }
-- name: recover phpunit gpg key
-  command: "gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A"
-  register: import
-  changed_when: "'imported: 1' in import.stdout"
 
 - name: gpg verify current phpunit download
   command: "gpg --verify /usr/local/bin/phpunit.asc"

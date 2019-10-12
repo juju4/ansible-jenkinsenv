@@ -1,0 +1,30 @@
+---
+
+- name: load local gpg keys
+  copy:
+    src: "pgp-{{ item }}.asc"
+    dest: "{{ install_archives }}"
+    mode: '0400'
+  with_items: "{{ phpunit_signing_keys_local }}"
+- name: import local gpg keys
+  command: "gpg --import {{ install_archives }}/pgp-{{ item }}.asc"
+  with_items: "{{ phpunit_signing_keys_local }}"
+  register: import0
+  changed_when: "'imported: [1-9]+' in import0.stdout"
+
+- name: recover gpg keys
+  command: "gpg --keyserver {{ pgp_server }} --recv-keys {{ item }}"
+  with_items: "{{ phpunit_signing_keys }}"
+  register: import
+  changed_when: "'imported: [1-9]+' in import.stdout"
+  when: not (proxy_host is defined and proxy_host)
+
+- name: recover gpg keys - proxy
+  command: >
+    gpg --keyserver {{ pgp_server }} --recv-keys {{ item }}
+        --keyserver-options
+        \"timeout=10 http-proxy={{ proxy_scheme }}://{{ proxy_host }}:{{ proxy_port }}\"
+  with_items: "{{ phpunit_signing_keys }}"
+  register: import
+  changed_when: "'imported: [1-9]+' in import.stdout"
+  when: proxy_host is defined and proxy_host
