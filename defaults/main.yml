@@ -7,9 +7,9 @@ jenkinsenv_containers_cron_cleaning: true
 jenkinsenv_w_virtualbox: false
 jenkinsenv_w_packer: false
 jenkinsenv_packer:
-  - { url: 'https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_linux_amd64.zip',
+  - { url: 'https://releases.hashicorp.com/packer/1.4.5/packer_1.4.5_linux_amd64.zip',
       dest: '/usr/local/bin/',
-      checksum: 'sha256:73074f4fa07fe15b5d65a694ee7afae2d1a64f0287e6b40897adee77a7afc552'
+      checksum: 'sha256:30da8dab9c526a6d15b037e2234f6f12cf3accfad77eb2c130738ec1a54cab6d'
     }
 
 docker_users:
