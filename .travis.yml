@@ -9,10 +9,10 @@ env:
 #    version: 7
 #    suite: default
   - distribution: ubuntu
-    version: 18.04
+    version: 20.04
     suite: default
   - distribution: ubuntu
-    version: 16.04
+    version: 18.04
     suite: default
 
 before_install:
@@ -69,7 +69,7 @@ before_install:
   - ls ~/.ssh
   - ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -P ""
 ## sudo/su get us a non-usual PATH ...
-  - '[ "X${distribution}" == "Xcentos" ] && sudo -E su $USER -c "sh -x ./test/lxd/centos-ssh-image.sh" || true'
+  - '[ "X${distribution}" == "Xcentos" ] && sudo -E su $USER -c "sh -x ./test/lxd/centos-ssh-image.sh ${version}" || true'
   - sudo -E su $USER -c "env"
   - sudo -E su $USER -c "env PATH=$PATH kitchen diagnose --all"
 
