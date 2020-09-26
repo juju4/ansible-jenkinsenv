@@ -1,0 +1,16 @@
+---
+
+jenkinsenv_extra_pkg:
+    - ansible
+    - vagrant
+    - php-cli
+    - php-xsl
+    - python3-virtualenv
+    - python3-pip
+    - zlib1g-dev
+## java
+    - ant
+    - maven
+    - checkstyle
+    - findbugs
+    - cobertura
