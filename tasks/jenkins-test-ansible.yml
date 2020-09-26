@@ -6,3 +6,5 @@
     state: present
   register: pkg_result
   until: pkg_result is success
+  environment:
+    ANSIBLE_SKIP_CONFLICT_CHECK: "{{ ANSIBLE_SKIP_CONFLICT_CHECK | default('0') }}"
