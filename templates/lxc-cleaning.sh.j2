@@ -7,7 +7,7 @@ export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin
 
 if [ X`which lxc` != 'X' ]; then
 
-  llist=`lxc list -c n | awk '!/---/ && !/NAME/  && /(default|nginx)(-scan|-vascan|-.*)?-(ubuntu|debian|centos|alpine)-/ { print $2 }'`
+  llist=`lxc list -c ns | awk '!/---/ && !/NAME/ && !/FREEZING/ && /(default|nginx)(-scan|-vascan|-.*)?-(ubuntu|debian|centos|alpine)-/ { print $2 }'`
   if [ "X$llist" != "X" ]; then
       lxc delete $llist --force 2>&1 > /tmp/lxc_cleaning.log
   fi
