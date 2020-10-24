@@ -30,7 +30,7 @@
   ignore_errors: true
 
 - name: check composer signature
-  fail: msg="FATAL! composer signature not matching. ({{ installer.stat.checksum }} vs {{ installersig.stdout }})"
+  fail: msg="FATAL! composer signature not matching. ({{ installer.stat.checksum }} vs {{ installersig.stdout }})"
   when: installer.stat.checksum != installersig.stdout
 
 - name: install composer
