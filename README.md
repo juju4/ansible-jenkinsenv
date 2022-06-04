@@ -1,3 +1,6 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+# DEPRECATED/LOOKING FOR MAINTAINERS -> archived
+
 [![Build Status - Master](https://travis-ci.com/juju4/ansible-jenkinsenv.svg?branch=master)](https://travis-ci.com/juju4/ansible-jenkinsenv)
 [![Build Status - Devel](https://travis-ci.com/juju4/ansible-jenkinsenv.svg?branch=devel)](https://travis-ci.com/juju4/ansible-jenkinsenv/branches)
 # Jenkins Environment ansible role
